@@ -41,7 +41,10 @@ class BaikeSpider(RedisSpider):
 
     def parse_pageview(self, response):
         item = response.meta['item']
-        a_dict = json.loads(response.text)
-        item['pv'] = a_dict['pv']
-        yield item
+        if '<body>' not in response.text:
+            a_dict = json.loads(response.text)
+            item['pv'] = a_dict['pv']
+            yield item
+        else:
+            print('pageview: <body> in html text, not a json string')
         # print item
