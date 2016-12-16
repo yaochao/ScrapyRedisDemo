@@ -12,7 +12,9 @@ class BaikeSpider(RedisSpider):
     custom_settings = {
         'SCHEDULER': 'scrapy_redis.scheduler.Scheduler',
         'DUPEFILTER_CLASS': 'scrapy_redis.dupefilter.RFPDupeFilter',
-        'REDIS_URL': 'redis://121.42.202.198:6379',
+        # 'REDIS_URL': 'redis://121.42.202.198:6379',
+        # 'REDIS_HOST': '127.0.0.1',
+        # 'REDIS_PORT': 6379,
         'ITEM_PIPELINES': {
             'ScrapyRedisDemo.pipelines.BaikeMongodbPipeline': 100
         }
